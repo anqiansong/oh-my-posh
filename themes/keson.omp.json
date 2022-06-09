@@ -5,44 +5,56 @@
       "alignment": "left",
       "segments": [
         {
-          "background": "#086179",
-          "foreground": "#00c983",
+          "background": "#3A86FF",
+          "foreground": "#ffffff",
           "leading_diamond": "\ue0b6",
           "style": "diamond",
-          "template": "{{ .Icon }} {{ .UserName }} ",
-          "trailing_diamond": "\ue0b0",
+          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
           "type": "os"
+        },
+        {
+          "background": "#3A86FF",
+          "foreground": "#ffffff",
+          "style": "powerline",
+          "template": " {{ .UserName }} ",
+          "type": "session"
         },
         {
           "background": "#ff479c",
           "foreground": "#ffffff",
           "powerline_symbol": "\ue0b0",
           "properties": {
-            "folder_icon": "\uf6d7",
-            "folder_separator_icon": "<transparent> \ue0b1 </>",
-            "home_icon": "\uf7db",
             "style": "agnoster_short"
           },
           "style": "powerline",
-          "template": " {{ .Path }} ",
+          "template": " \ue5ff {{ .Path }} ",
           "type": "path"
         },
         {
-          "background": "#fffb38",
-          "foreground": "#000000",
+          "background": "#4caf50",
+          "foreground": "#193549",
           "powerline_symbol": "\ue0b0",
           "properties": {
-            "branch_icon": " <#000000>\ue0a0 </>",
+            "time_format": "2006-01-02 15:04:05"
+          },
+          "style": "powerline",
+          "template": " {{ .CurrentDate | date .Format }} ",
+          "type": "time"
+        },
+        {
+          "background": "#fffb38",
+          "foreground": "#193549",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
             "fetch_stash_count": true,
-            "fetch_status": false,
             "fetch_upstream_icon": true
           },
           "style": "powerline",
-          "template": " \u279c ({{ .UpstreamIcon }}{{ .HEAD }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }}) ",
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} ",
           "type": "git"
         },
         {
-          "background": "#76b367",
+          "background": "#6CA35E",
           "foreground": "#ffffff",
           "powerline_symbol": "\ue0b0",
           "style": "powerline",
@@ -50,38 +62,25 @@
           "type": "node"
         },
         {
-          "background": "#43a8e2",
-          "foreground": "#ffffff",
-          "properties": {
-            "always_enabled": true
-          },
-          "style": "plain",
-          "template": "<transparent>\ue0b0</> \ufbab {{ .FormattedMs }}\u2800",
-          "type": "executiontime"
-        },
-        {
-          "background": "#8f43f3",
-          "foreground": "#ffffff",
+          "background": "#ffff66",
+          "foreground": "#193549",
           "powerline_symbol": "\ue0b0",
-          "properties": {
-            "time_format": "15:04:05"
-          },
-          "style": "diamond",
-          "template": "<parentBackground>\ue0b0</> \uf017 {{ .CurrentDate | date .Format }} ",
-          "type": "time"
+          "style": "powerline",
+          "template": " \uf0e7 ",
+          "type": "root"
         },
         {
           "background": "#2e9599",
           "background_templates": [
-            "{{ if gt .Code 0 }}red{{ end }}"
+            "{{ if gt .Code 0 }}#f1184c{{ end }}"
           ],
           "foreground": "#ffffff",
-          "powerline_symbol": "\ue0b0",
+          "leading_diamond": "<transparent,background>\ue0b0</>",
           "properties": {
             "always_enabled": true
           },
           "style": "diamond",
-          "template": "<parentBackground>\ue0b0</> {{ if gt .Code 0 }}\uf525{{ else }}\uf469{{ end }}",
+          "template": " \uf7d4 ",
           "trailing_diamond": "\ue0b4",
           "type": "exit"
         }
@@ -93,15 +92,9 @@
       "newline": true,
       "segments": [
         {
-          "foreground": "#cd5e42",
+          "foreground": "#f1184c",
           "style": "plain",
-          "template": "\ue3bf ",
-          "type": "root"
-        },
-        {
-          "foreground": "#CD4277",
-          "style": "plain",
-          "template": " <#45F1C2><b>\u26a1</b></><b>{{ .UserName }}</b> <#26C6DA>\u276f</><#45F1C2>\u276f</>",
+          "template": "<#26C6DA>❯</><#45F1C2>❯ </><b>{{ .UserName }}</b> <#26C6DA>❯</><#45F1C2>❯</>",
           "type": "text"
         }
       ],
